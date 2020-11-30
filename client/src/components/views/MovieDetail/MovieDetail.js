@@ -5,10 +5,10 @@ import axios from "axios";
 // import Comments from "./Sections/Comments";
 // import LikeDislikes from "./Sections/LikeDislikes";
 import { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE } from "../../Config";
-// import GridCards from "../commons/GridCards";
+import GridCards from "../commons/GridCards";
 import MainImage from "../../views/LandingPage/Sections/MainImage";
 import MovieInfo from "./Sections/MovieInfo";
-// import Favorite from "./Sections/Favorite";
+import Favorite from "./Sections/Favorite";
 
 function MovieDetailPage(props) {
   const movieId = props.match.params.movieId; // app에서 movie/:movieId 때문에 가져올수있음!
@@ -81,13 +81,14 @@ function MovieDetailPage(props) {
 
       {/* Body */}
       <div style={{ width: "85%", margin: "1rem auto" }}>
-        {/* <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <Favorite
             movieInfo={Movie}
             movieId={movieId}
             userFrom={localStorage.getItem("userId")}
+            //로컬스토리지에 로그인하면 저장되는데.. 그걸 사용할것임!
           />
-        </div> */}
+        </div>
 
         {/* Movie Info */}
         {!LoadingForMovie ? <MovieInfo movie={Movie} /> : <div>loading...</div>}
@@ -100,7 +101,7 @@ function MovieDetailPage(props) {
         >
           <Button onClick={toggleActorView}>Toggle Actor View </Button>
         </div>
-        {/* 
+
         {ActorToggle && (
           <Row gutter={[16, 16]}>
             {!LoadingForCasts ? (
@@ -121,7 +122,7 @@ function MovieDetailPage(props) {
               <div>loading...</div>
             )}
           </Row>
-        )} */}
+        )}
         <br />
 
         {/* <div style={{ display: "flex", justifyContent: "center" }}>
